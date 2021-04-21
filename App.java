@@ -1,5 +1,7 @@
 package first;
 
+import java.io.IOException;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class App {
@@ -27,12 +29,19 @@ public class App {
                     System.out.println(UserInterface.urlPrompt());
                     URL = input.nextLine();
 
-                    PortfolioNewsAnalyzer analyzer = new PortfolioNewsAnalyzer();
-                    analyzer.addPortfolioCompany(searchTerm);
+                    detectLang languageVerification = new detectLang();
+                    String lang = detectLang.getLangFromText(URL);
+                    if (!detectLang.verifyLangSupport(lang)) {
+                        System.out.println(UserInterface.languageSupport());
+                        throw new IOException();
+                    }
+
+                    DocumentAnalyzer analyzer = new DocumentAnalyzer();
+                    analyzer.addSearchTerm(searchTerm);
                     if (analyzer.analyzeArticle(URL)) {
-                        System.out.println("your company is mentioned");
+                        System.out.println("your term is mentioned");
                     } else {
-                        System.out.println("Your company is not mentioned");
+                        System.out.println("Your term is not mentioned");
                     }
                     break;
                 case 2:

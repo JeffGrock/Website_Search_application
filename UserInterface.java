@@ -22,7 +22,7 @@ public class UserInterface {
     }
 
     public static String errorMessage() {
-        return "I dident undertand that one, please select from the options above";
+        return "The program encountered an error. Please press \"enter\" then select from the options above";
     }
 
     public static String languageSupport() {
