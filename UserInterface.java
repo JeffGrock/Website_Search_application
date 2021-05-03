@@ -3,9 +3,10 @@ package first;
 public class UserInterface {
 
     public static String mainUi() {
-        String ui = "********************************\n" + "* News Analyis app\n"
-                + "* Please elect from the options below:\n" + "* \n" + "* 1. Search for Business \n"
-                + "* 2. detect Langauge \n" + "* 0. exit\n" + "********************************\n";
+        String ui = "********************************\n" + "* Document Analyis app\n"
+                + "* Please select from the options below:\n" + "* \n" + "* 1. Search for terms\n"
+                + "* 2. detect Langauge \n" + "* 3. Search Terms International(in progress)" + "* 0. exit\n"
+                + "********************************\n";
         return ui;
     }
 
@@ -14,7 +15,7 @@ public class UserInterface {
     }
 
     public static String newCompanyPrompt() {
-        return "Enter the name of the company you wish to search for: ";
+        return "Enter the name of the term you wish to search for: ";
     }
 
     public static String urlPrompt() {

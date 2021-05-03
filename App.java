@@ -23,38 +23,38 @@ public class App {
                 input.nextLine();
 
                 switch (selection) {
-                case 1:
-                    System.out.println(UserInterface.newCompanyPrompt());
-                    searchTerm = input.nextLine();
-                    System.out.println(UserInterface.urlPrompt());
-                    URL = input.nextLine();
+                    case 1:
+                        System.out.println(UserInterface.newCompanyPrompt());
+                        searchTerm = input.nextLine();
+                        System.out.println(UserInterface.urlPrompt());
+                        URL = input.nextLine();
 
-                    detectLang languageVerification = new detectLang();
-                    String lang = detectLang.getLangFromText(URL);
-                    if (!detectLang.verifyLangSupport(lang)) {
-                        System.out.println(UserInterface.languageSupport());
-                        throw new IOException();
-                    }
+                        detectLang languageVerification = new detectLang();
+                        String lang = detectLang.getLangFromText(URL);
+                        if (!detectLang.verifyLangSupport(lang)) {
+                            System.out.println(UserInterface.languageSupport());
+                            throw new IOException();
+                        }
 
-                    DocumentAnalyzer analyzer = new DocumentAnalyzer();
-                    analyzer.addSearchTerm(searchTerm);
-                    if (analyzer.analyzeArticle(URL)) {
-                        System.out.println("your term is mentioned");
-                    } else {
-                        System.out.println("Your term is not mentioned");
-                    }
-                    break;
-                case 2:
-                    System.out.println(UserInterface.urlPrompt());
-                    URL = input.nextLine();
-                    String temp = detectLang.getLangFromText(URL);
-                    System.out.println(temp);
-                    break;
-                case 0:
-                    break;
-                default:
-                    System.out.println(UserInterface.errorMessage());
-                    break;
+                        DocumentAnalyzer analyzer = new DocumentAnalyzer();
+                        analyzer.addSearchTerm(searchTerm);
+                        if (analyzer.analyzeArticle(URL)) {
+                            System.out.println("your term is mentioned");
+                        } else {
+                            System.out.println("Your term is not mentioned");
+                        }
+                        break;
+                    case 2:
+                        System.out.println(UserInterface.urlPrompt());
+                        URL = input.nextLine();
+                        String temp = detectLang.getLangFromText(URL);
+                        System.out.println(temp);
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        System.out.println(UserInterface.errorMessage());
+                        break;
                 }
             } catch (Exception e) {
                 System.out.println(UserInterface.errorMessage());
