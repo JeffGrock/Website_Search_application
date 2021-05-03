@@ -50,6 +50,27 @@ public class App {
                         String temp = detectLang.getLangFromText(URL);
                         System.out.println(temp);
                         break;
+                    case 3:
+                        System.out.println(UserInterface.newCompanyPrompt());
+                        searchTerm = input.nextLine();
+                        System.out.println(UserInterface.urlPrompt());
+                        URL = input.nextLine();
+
+                        detectLang languageVerificationInt = new detectLang();
+                        String langInt = detectLang.getLangFromText(URL);
+                        if (!detectLang.verifyLangSupport(langInt)) {
+                            System.out.println(UserInterface.languageSupport());
+                            throw new IOException();
+                        }
+
+                        DocumentAnalyzerInt analyzerInt = new DocumentAnalyzerInt();
+                        analyzerInt.addSearchTerm(searchTerm);
+                        if (analyzerInt.analyzeArticle(URL)) {
+                            System.out.println("your term is mentioned");
+                        } else {
+                            System.out.println("Your term is not mentioned");
+                        }
+                        break;
                     case 0:
                         break;
                     default:
